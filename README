@@ -1,0 +1,55 @@
+future chagnes:✅⛔️
+   
+    minor chages:
+        1✅ "uncategorised" -> "other"
+        2.✅ hide quantity in the more options 
+            2.1✅ show complete task
+            2.2⛔️ color the edit text box to gray
+        3.✅ remove subtasks
+        4.✅ png to svg
+        5.⛔️ links to the icons
+
+
+    Features:
+        1.⛔️ hide/show completed tasks
+        2.⛔️ change the buttons on the top
+        3.❓ add keyboard shortcuts for creating items/categories
+            3.1✅ make the cursor to appear on the name in the list and the categories likewise on items
+        4.✅ edit lists names 
+        5. move item between lists 
+        6. when adding inside a category you can write the name in the box without another box popping
+        7. for categories:
+            -✅delete a category
+                -if tasks are active ask to confirm
+        8. for lists:
+            -✅edit lists names
+            -✅remove buttons at top
+            -show/hide (toggle button) on completed tasks
+            -✅delete a list
+                -✅if tasks are active ask to confirm
+
+===============================================
+- chagnge the UI
+    -chagne how button looks
+    -move the add buttons to the bottom? (for each the tasks and the categories)
+    -chagne the tabs format to previous
+    -fix the icons and their sizes
+    -fonts and colors
+   
+- settings
+    ✅-change list name 
+    -show/hide completed tasks
+
+- features
+    -create inhouse prompt box for deleting categories and lists, that will pop up only if there are active tasks
+    -drop down categories to hide and show
+    -no need for OTHER category - there needs to be always one 
+    -move items between lists(add list as part of the metadata and give option to change it)
+
+
+- others
+    -deploy the app
+    -add to github
+    -check how it looks on mobile
+
+===============================================

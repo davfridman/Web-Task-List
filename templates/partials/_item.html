@@ -1,0 +1,20 @@
+<li class="sortable-item {% if item.is_completed %}completed{% endif %}" data-item-id="{{ item.id }}">
+    <input type="checkbox" class="item-completed-checkbox" data-item-id="{{ item.id }}" {% if item.is_completed %}checked{% endif %}>
+    <div class="item-content">
+        <strong class="item-name" data-item-id="{{ item.id }}">{{ item.name }}</strong>
+        <ul class="item-metadata">
+            {% if item.quantity > 1 %}<li>Quantity: {{ item.quantity }}</li>{% endif %}
+            {% if item.notes %}<li>Notes: {{ item.notes }}</li>{% endif %}
+            {% if item.who_needs_it %}<li>For: {{ item.who_needs_it }}</li>{% endif %}
+            {% if item.who_will_buy_it %}<li>Buyer: {{ item.who_will_buy_it }}</li>{% endif %}
+        </ul>
+    </div>
+    <div class="item-actions">
+        <button class="edit-item-btn icon-btn" data-item-id="{{ item.id }}">
+            <img src="{{ url_for('static', filename='images/edit_icon.svg') }}" alt="Edit" class="icon">
+        </button>
+        <a href="{{ url_for('delete_item', item_id=item.id) }}" class="delete-icon icon-btn">
+            <img src="{{ url_for('static', filename='images/delete_icon.svg') }}" alt="Delete" class="icon">
+        </a>
+    </div>
+</li>

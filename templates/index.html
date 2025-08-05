@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>My Shopping List</h1>
+
+        <!-- List Tabs -->
+        <div class="list-tabs">
+            {% for list in all_lists %}
+                <a href="{{ url_for('set_active_list', list_id=list.id) }}" 
+                   class="tab {% if list.id == active_list_id %}active{% endif %}">
+                    {{ list.name }}
+                </a>
+            {% endfor %}
+            <button class="tab add-list-btn" data-modal-target="#modal-add-list">+</button>
+        </div>
+
+        <div class="settings-container">
+            <button id="settings-btn">Settings</button>
+            <div id="settings-menu" class="settings-menu">
+                <button data-modal-target="#modal-category">
+                    <img src="{{ url_for('static', filename='images/add_category_icon.svg') }}" alt="Add Category" class="icon">
+                    Add New Category
+                </button>
+                <button data-modal-target="#modal-item">
+                    <img src="{{ url_for('static', filename='images/add_item_icon.svg') }}" alt="Add Item" class="icon">
+                    Add New Item
+                </button>
+                <button id="edit-list-name-btn" data-modal-target="#modal-edit-list">
+                    <img src="{{ url_for('static', filename='images/edit_list_name_icon.svg') }}" alt="Edit List Name" class="icon">
+                    Edit List Name
+                </button>
+                <form action="{{ url_for('clear_completed') }}" method="post" style="display: block; margin: 0;">
+                    <button type="submit" class="danger">
+                        <img src="{{ url_for('static', filename='images/clear_completed_icon.svg') }}" alt="Clear Completed" class="icon">
+                        Clear Completed Items
+                    </button>
+                </form>
+                {% if all_lists|length > 1 %}
+                <button id="delete-list-btn" class="danger" data-list-id="{{ active_list_id }}">
+                    <img src="{{ url_for('static', filename='images/delete_list_icon.svg') }}" alt="Delete List" class="icon">
+                    Delete Current List
+                </button>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+
+        <div id="list-container">
+            {% for category in grouped_items %}
+            <div class="category-group" data-category-id="{{ category.id }}">
+                <h3>
+                    <span class="category-name" data-category-id="{{ category.id }}">{{ category.name }}</span>
+                    <div class="category-actions">
+                        <button class="add-item-to-category-btn icon-btn" data-category-id="{{ category.id }}">
+                            <img src="{{ url_for('static', filename='images/add_icon.svg') }}" alt="Add Item" class="icon">
+                        </button>
+                        {% if category.name != 'Other' %}
+                        <button class="delete-category-btn icon-btn" data-category-id="{{ category.id }}">
+                            <img src="{{ url_for('static', filename='images/delete_icon.svg') }}" alt="Delete Category" class="icon">
+                        </button>
+                        {% endif %}
+                    </div>
+                </h3>
+                <ul class="item-list" data-category-id="{{ category.id }}">
+                    {% for item in category['items'] %}
+                        {% include 'partials/_item.html' %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% else %}
+                <p>This list has no categories yet. Add one to get started!</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Modals -->
+    {% include 'partials/_modals.html' %}
+    <div id="overlay"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

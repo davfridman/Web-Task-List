@@ -1,0 +1,11 @@
+# Virtual Environment
+venv/
+
+# Python cache
+__pycache__/
+
+# Database file
+shopping_list.db
+
+# VSCode settings
+.vscode/

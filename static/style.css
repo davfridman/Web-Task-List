@@ -1,0 +1,479 @@
+/* General Body Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* List Tabs */
+.list-tabs {
+    display: flex;
+    flex-wrap: wrap; /* Allow tabs to wrap */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab {
+    padding: 10px 15px; /* More compact padding */
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    margin-right: 5px;
+    margin-bottom: -1px; /* Overlap the container's bottom border */
+    background-color: #f8f9fa;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 5px 5px 0 0;
+    white-space: nowrap; /* Prevent name from wrapping */
+}
+
+.tab.active {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+    color: #007bff;
+}
+
+.tab:hover {
+    background-color: #e9ecef;
+}
+
+.add-list-btn {
+    background-color: #e9ecef;
+    font-weight: bold;
+    font-size: 1.2em;
+    width: auto; /* Override full-width */
+    padding: 10px 15px; /* Match other tabs */
+    text-align: center;
+}
+
+.add-list-btn:hover {
+    background-color: #dee2e6;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+}
+
+.icon-btn:hover {
+    color: #343a40;
+}
+
+.icon-btn .icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    opacity: 0.7;
+}
+
+.icon-btn:hover .icon {
+    opacity: 1;
+}
+
+.delete-category-btn, .delete-icon {
+    color: #dc3545;
+}
+
+.delete-category-btn:hover, .delete-icon:hover {
+    color: #c82333;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #333;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+h3 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Forms */
+form {
+    margin-bottom: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    width: 100%;
+    text-align: left;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Horizontal Rule */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    margin: 20px 0;
+}
+
+/* --- Settings Dropdown --- */
+.settings-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+#settings-btn {
+    background-color: #6c757d;
+    width: auto;
+}
+
+#settings-btn:hover {
+    background-color: #5a6268;
+}
+
+.settings-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+    min-width: 240px; /* Wider menu */
+}
+
+.settings-menu.active {
+    display: block;
+}
+
+.settings-menu button, .settings-menu form {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    color: #333;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.settings-menu button {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px; /* Space between icon and text */
+}
+
+.settings-menu .icon {
+    width: 18px;
+    height: 18px;
+    stroke: #333;
+}
+
+.settings-menu button:hover {
+    background-color: #f1f1f1;
+}
+
+.settings-menu button.danger .icon {
+    stroke: #dc3545;
+}
+
+/* Main List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+}
+
+li.completed {
+    background-color: #f0f0f0;
+    color: #888;
+}
+
+.sub-item-list {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+button.add-sub-item-btn {
+    background: none;
+    border: 1px solid #ccc;
+    color: #888;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    text-align: center;
+    padding: 0;
+    margin-left: 5px;
+}
+
+li ul {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+li ul li {
+    padding: 5px 0;
+    border: none;
+    margin: 0;
+}
+
+/* --- Category Grouping --- */
+.category-group {
+    margin-bottom: 2em;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.category-group h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    color: #007bff;
+    font-weight: 600;
+}
+
+span.category-name {
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.category-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-category-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0 10px;
+    opacity: 0.6;
+}
+
+.delete-category-btn:hover {
+    opacity: 1;
+}
+
+a.delete-icon {
+    font-size: 1.2em;
+    color: #dc3545;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+a.delete-icon:hover {
+    color: #c82333;
+}
+
+/* New Item Layout Styles */
+.item-actions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 15px;
+}
+
+.item-actions button, .item-actions a {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.item-actions img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+}
+
+.item-actions button:hover img, .item-actions a:hover img {
+    opacity: 1;
+}
+
+.item-content {
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+.item-name {
+    cursor: pointer;
+}
+
+.item-metadata {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.item-metadata li {
+    display: inline;
+    margin-right: 10px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+
+/* --- Modal Styles --- */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 15px 20px;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+button.danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+button.danger:hover {
+    background-color: #c82333;
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.collapsible-content.active {
+    max-height: 500px;
+}
+
+#more-options-btn {
+    background-color: #6c757d;
+    margin-bottom: 10px;
+    width: auto;
+}
+
+#more-options-btn:hover {
+    background-color: #5a6268;
+}

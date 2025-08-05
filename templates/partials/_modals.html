@@ -1,0 +1,94 @@
+<!-- Add List Modal -->
+<div class="modal" id="modal-add-list">
+    <div class="modal-header">
+        <div class="title">Create New List</div>
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <form action="{{ url_for('add_list') }}" method="post">
+            <input type="text" name="list_name" placeholder="New list name" required>
+            <button type="submit">Create List</button>
+        </form>
+    </div>
+</div>
+
+<!-- Edit List Modal -->
+<div class="modal" id="modal-edit-list">
+    <div class="modal-header">
+        <div class="title">Edit List Name</div>
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <form id="edit-list-form">
+            <input type="hidden" id="edit-list-id" name="id">
+            <input type="text" id="edit-list-name" name="name" required>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<!-- Add Category Modal -->
+<div class="modal" id="modal-category">
+    <div class="modal-header">
+        <div class="title">Add New Category</div>
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <form action="{{ url_for('add_category') }}" method="post">
+            <input type="text" name="category_name" placeholder="New category name" required>
+            <button type="submit">Add Category</button>
+        </form>
+    </div>
+</div>
+
+<!-- Edit Category Modal -->
+<div class="modal" id="modal-edit-category">
+    <div class="modal-header">
+        <div class="title">Edit Category</div>
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <form id="edit-category-form">
+            <input type="hidden" id="edit-category-id" name="id">
+            <input type="text" id="edit-category-name" name="name" required>
+            <button type="submit">Save Changes</button>
+            <button type="button" id="delete-category-btn" class="danger">Delete Category</button>
+        </form>
+    </div>
+</div>
+
+<!-- Add/Edit Item Modal -->
+<div class="modal" id="modal-item">
+    <div class="modal-header">
+        <div class="title">Add Item</div>
+        <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+        <form id="item-form" action="{{ url_for('add_item') }}" method="post">
+            <input type="hidden" id="item-id" name="id">
+            <input type="hidden" id="parent-item-id" name="parent_item_id">
+            <input type="text" id="item-name" name="name" placeholder="Item name" required>
+
+            <div>
+                <label for="item-is_completed">Completed</label>
+                <input type="checkbox" id="item-is_completed" name="is_completed" value="1">
+            </div>
+
+            <button type="button" id="more-options-btn">More Options</button>
+
+            <div id="more-options-content" class="collapsible-content">
+                <input type="number" id="item-quantity" name="quantity" value="1" min="1" required>
+                <textarea id="item-notes" name="notes" placeholder="Notes..."></textarea>
+                <input type="text" id="item-who_needs_it" name="who_needs_it" placeholder="Who needs it?">
+                <input type="text" id="item-who_will_buy_it" name="who_will_buy_it" placeholder="Who will buy it?">
+                <select id="item-category_id" name="category_id">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit">Save Item</button>
+        </form>
+    </div>
+</div>
