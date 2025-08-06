@@ -4,6 +4,10 @@ from database_pg import create_tables
 from models_pg.item import Item
 from models_pg.category import Category
 
+# Initialize the database and create tables if they don't exist
+# This is safe to run on every startup because the function uses "IF NOT EXISTS".
+create_tables()
+
 app = Flask(__name__)
 
 # In production, the SECRET_KEY should be set as an environment variable.

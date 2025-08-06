@@ -1,5 +1,6 @@
 # Virtual Environment
 venv/
+.venv/
 
 # Python cache
 __pycache__/
@@ -9,3 +10,9 @@ shopping_list.db
 
 # VSCode settings
 .vscode/
+
+# macOS system file
+.DS_Store
+
+# User-created hidden file
+hidden
