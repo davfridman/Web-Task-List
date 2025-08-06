@@ -357,4 +357,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Toggle Completed Items Logic ---
+    const toggleCompletedBtn = document.getElementById('toggle-completed-btn');
+    const toggleCompletedText = document.getElementById('toggle-completed-text');
+    const toggleCompletedIcon = document.getElementById('toggle-completed-icon');
+
+    const openEyeIcon = "/static/images/toggle_completed_icon.svg";
+    const closedEyeIcon = "/static/images/toggle_completed_off_icon.svg";
+
+    function setToggleState(hide) {
+        if (hide) {
+            listContainer.classList.add('hide-completed');
+            toggleCompletedText.textContent = 'Show Completed';
+            toggleCompletedIcon.src = closedEyeIcon;
+            localStorage.setItem('hideCompleted', 'true');
+        } else {
+            listContainer.classList.remove('hide-completed');
+            toggleCompletedText.textContent = 'Hide Completed';
+            toggleCompletedIcon.src = openEyeIcon;
+            localStorage.setItem('hideCompleted', 'false');
+        }
+    }
+
+    // Check local storage on page load
+    const shouldHideCompleted = localStorage.getItem('hideCompleted') === 'true';
+    setToggleState(shouldHideCompleted);
+
+    if (toggleCompletedBtn) {
+        toggleCompletedBtn.addEventListener('click', () => {
+            const isHidden = listContainer.classList.contains('hide-completed');
+            setToggleState(!isHidden);
+        });
+    }
 });

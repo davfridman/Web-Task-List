@@ -248,6 +248,10 @@ li.completed {
     color: #888;
 }
 
+.hide-completed .completed {
+    display: none;
+}
+
 .sub-item-list {
     margin-left: 30px;
     margin-top: 10px;
